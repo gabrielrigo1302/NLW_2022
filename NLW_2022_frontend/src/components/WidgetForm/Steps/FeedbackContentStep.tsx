@@ -1,7 +1,9 @@
 import { ArrowLeft } from "phosphor-react";
 import { FormEvent, useState } from "react";
+import { api } from "../../../lib/api";
 import { FeedbackType, feedbackTypes } from "../../../types/feedbackTypes"
 import { CloseButton } from "../../CloseButton"
+import { Loading } from "../Loading";
 import { ScreenshotButton } from "../ScreenshotButton";
 
 interface FeedbackTypeStepProps {
@@ -17,16 +19,26 @@ export function FeedbackContentStep({
 }: FeedbackTypeStepProps) {
     const [screenshot, setScreenshot] = useState<string | null>(null) 
     const [comment, setComment] = useState<string>('')
+    const [isSendingFeedback, setIsSendingFeedback] = useState<boolean>(false);
     const feedbackTypeInfo = feedbackTypes[feedbackType];
     
-    function handleSubmitFeedback(event: FormEvent) {
+    async function handleSubmitFeedback(event: FormEvent) {
         event.preventDefault();
 
-        console.log({
-            screenshot,
-            comment
-        });
+        // console.log({
+        //     screenshot,
+        //     comment
+        // });
 
+        setIsSendingFeedback(true);
+
+        await api.post('/feedbacks', {
+            type: feedbackType,
+            comment,
+            screenshot
+        })
+
+        setIsSendingFeedback(false);
         onFeedbackSent();
     }
 
@@ -60,9 +72,9 @@ export function FeedbackContentStep({
                     <button
                         type='submit'
                         className="p-2 bg-brand-brand rounded-md border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-brand-hover focus:outline-none focus:ring-offset-zinc-900 focus:ring-brand-brand transition-colors disabled:opacity-50 disabled:bg-brand-brand"
-                        disabled={comment.length === 0}
+                        disabled={comment.length === 0 || isSendingFeedback }
                     >
-                        Enviar feedback
+                        {isSendingFeedback ? <Loading /> : 'Enviar feedback'}
                     </button>
                 </footer>
             </form>
