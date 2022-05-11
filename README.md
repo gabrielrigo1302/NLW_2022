@@ -15,3 +15,12 @@
 - TSX: TS + JSX
 
 - For some reason, npm commands only works when I open terminal as admin.
+
+### To Do:
+
+- Light/Dark Theme
+- Use a email service in production (mailgun, for example)
+- Improve HTML/CSS email template
+- Feedback DashBoard
+  - Authentication (Firebase/OAuth)
+- Field and Errors treatment and unity tests
