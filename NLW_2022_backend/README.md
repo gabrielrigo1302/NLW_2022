@@ -25,3 +25,16 @@ Mailtrap
 ### Dependency Inversion Principle
 
 - O contexto externo deve passar as dependências e não a classe buscar
+
+## Observation
+
+For some reason, prisma doesn't work when the project is imported in another environment. Until now, the solution is copy the content from
+'/prisma/schema.prisma' and delete the '/prisma' folder. After this, run:
+
+    - npx prisma init
+
+Switch the content from '/prisma/schema.prisma' by the copy and run:
+
+    - npx prisma migrate
+
+After this the api should work.
