@@ -14,4 +14,4 @@
 - JSX: JS + XML
 - TSX: TS + JSX
 
-- For some reason, npm commands is only works when I open terminal as admin.
+- For some reason, npm commands only works when I open terminal as admin.
