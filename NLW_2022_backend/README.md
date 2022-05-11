@@ -1,8 +1,17 @@
 # NLW_2022
 
+## Running Local Project:
+
+- npm install;
+- npm run dev;
+
 ## SMTP
 
 Mailtrap
+
+## Deploy
+
+Deployment platform: Railway
 
 ## SOLID
 
@@ -28,6 +37,12 @@ Mailtrap
 
 ## Observation
 
+### Database
+
+Database is PostgreSQL
+
+### Problems with Prisma
+
 For some reason, prisma doesn't work when the project is imported in another environment. Until now, the solution is copy the content from
 '/prisma/schema.prisma' and delete the '/prisma' folder. After this, run:
 
@@ -38,3 +53,7 @@ Switch the content from '/prisma/schema.prisma' by the copy and run:
     - npx prisma migrate
 
 After this the api should work.
+
+### Problems with Railway
+
+For some reason, railway doesn't build correctly with 'npx prisma migrate && npm run start' as start command. Because of this, when there is a new migration to run, you should run first the migrate command and after, switch to npm run start.

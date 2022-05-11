@@ -2,11 +2,20 @@
 
 WEB:
 
+## Running Local Project:
+
+- npm install;
+- npm run dev;
+
 ## Used Technologies:
 
 - Vite: is a build tool that works like babel (converts code to be used in "any" browser). In addition, use esmodules feature that allows browsers understand import through code (without this, we'll need to use Webpack or something similar);
 
 - Tailwind
+
+## Deploy:
+
+Deploy platform: Vercel
 
 ## Observation:
 
