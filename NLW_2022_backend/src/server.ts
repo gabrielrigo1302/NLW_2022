@@ -9,6 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(port, () => {
+app.listen(port || 3333, () => {
     console.log(`Port: ${port}`);
 });
